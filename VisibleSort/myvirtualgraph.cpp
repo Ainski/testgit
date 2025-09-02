@@ -53,7 +53,7 @@ void MyVirtualGraph::settext(const QString &text)
     _text=text;
     update();
 }
-void MyVirtualGraph::setPointF (const QPointF lpp)
+void MyVirtualGraph::setLeftUpPoint(const QPointF lpp)
 {
     _leftUpPoint=lpp;
     move(int(_leftUpPoint.x()),int(_leftUpPoint.y()));

@@ -16,7 +16,7 @@ public:
                             const qreal& lenth=100.0,const qreal &height=100.0 ,
                             const QColor& color=Qt::blue,const QColor &bgcolor=Qt::transparent);
     void settext(const QString &text);
-    void setPointF (const QPointF lpp);
+    void setLeftUpPoint (const QPointF lpp);
     void setcolor(const QColor &color);
     void setbgcolor(const QColor &bgcolor);
     void setlenth(const qreal &lenth);

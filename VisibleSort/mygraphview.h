@@ -17,6 +17,7 @@ public:
                          const QPointF _LeftUpPer=QPointF(0.05,0.05),
                          const qreal _WidthPer=0.9,
                          const qreal _HeightPer=0.9);
+    virtual ~MyGraphView();
     void draw();
 signals:
     void toupdate();

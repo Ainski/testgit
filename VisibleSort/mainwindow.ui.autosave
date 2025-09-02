@@ -31,14 +31,50 @@
     <item>
      <layout class="QVBoxLayout" name="ButtonBar">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1">
+       <widget class="QComboBox" name="comboBox">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2"/>
+         <property name="text">
+          <string>直接插入排序</string>
+         </property>
         </item>
         <item>
-         <widget class="QTextBrowser" name="textBrowser"/>
+         <property name="text">
+          <string>折半插入排序</string>
+         </property>
         </item>
-       </layout>
+        <item>
+         <property name="text">
+          <string>希尔排序</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>冒泡排序</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>快速排序</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>新建项目</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>新建项目</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="InputSortItem">
+        <property name="text">
+         <string>输入排序项</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

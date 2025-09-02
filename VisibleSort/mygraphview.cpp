@@ -32,6 +32,12 @@ MyGraphView::MyGraphView(const QVector<unsigned int> &_nums,QWidget *parent ,
     VerticalAxis->SetArrowSize(10);
     VerticalAxis->setVisible(false);
 
+    for(int i=0;i<10000;i++){
+        MyVirtualGraph* tmp=new MyVirtualGraph(this);
+        tmp->setVisible(false);
+        Squares.push_back(tmp);
+    }
+
 }
 void MyGraphView::draw()
 {
@@ -42,6 +48,9 @@ void MyGraphView::draw()
     if(nums.empty()){
         HorizontalAxis->setVisible(false);
         VerticalAxis->setVisible(false);
+        for (auto &Square:Squares){
+            Square->setVisible(false);
+        }
         return ;
     }
 
@@ -58,6 +67,25 @@ void MyGraphView::draw()
                                         (LeftUpPer.y()+HeightPer-0.05)*_height));
     VerticalAxis->SetEndPoint(QPointF((LeftUpPer.x()+WidthPer)*_width,
                                       (LeftUpPer.y()+HeightPer-0.05)*_height));
+    qreal squareWidth=_width*(WidthPer-0.1);
+    qreal squareHeight=_height*(HeightPer-0.05);
+    QPointF SquareBegin(_width*(LeftUpPer.x()+0.05),_height*(LeftUpPer.y()+HeightPer-0.05));
+
+    int NumsSize=nums.size();
+    unsigned int max_num=0;
+    for(auto num:nums){
+        max_num=qMax(max_num,num);
+    }
+    for(int i=0;i<NumsSize;i++){
+        Squares[i]->settext(QString::number(nums[i]));
+        Squares[i]->setVisible(true);
+        Squares[i]->setLeftUpPoint(SquareBegin+QPointF(squareWidth/nums.size()*i,-squareHeight*(qreal(nums[i])/max_num)));
+        Squares[i]->setlenth(squareWidth/nums.size());
+        Squares[i]->setheight(squareHeight*(qreal(nums[i])/max_num));
+        Squares[i]->setbgcolor(Qt::gray);
+
+    }
+
 //    HorizontalAxis= new MyArrow(
 //                this,
 //                "Horizontal Coordinate Axis",
@@ -81,4 +109,12 @@ void MyGraphView::draw()
 }
 void MyGraphView::updating()
 {
+}
+MyGraphView::~MyGraphView()
+{
+    delete VerticalAxis;
+    delete HorizontalAxis;
+    for (auto &a : Squares){
+        delete a;
+    }
 }
